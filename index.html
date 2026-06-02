@@ -248,26 +248,7 @@
 .deploybar b{color:var(--ink)}
 .deploybar .di{flex:none;width:24px;height:24px;border-radius:7px;background:var(--green-d);color:#fff;display:grid;place-items:center;font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:13px}
 
-
-  /* ===== inline market toggle (mirrors Active hub subnav) ===== */
-  #p-demos{padding:0}
-  .subnav-acc{display:flex;align-items:center;justify-content:space-between;gap:14px;
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    background:rgba(255,255,255,.92);padding:10px 28px}
-  .tabs-acc{display:flex;gap:6px;background:#EEF1EB;padding:5px;border-radius:30px;border:1px solid var(--line)}
-  .tab-acc{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:.01em;color:#6c7a72;
-    padding:9px 17px;border-radius:24px;cursor:pointer;border:none;background:transparent;transition:all .18s;white-space:nowrap}
-  .tab-acc:hover{color:var(--ink)}
-  .tab-acc.active{background:#fff;color:#00402a;box-shadow:0 1px 3px rgba(10,46,33,.16)}
-  .tab-acc .flag-acc{font-weight:800;margin-right:7px;color:var(--green-ink,#008146)}
-  .tab-acc.active .flag-acc{color:var(--green)}
-  .demo-open{font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--green-ink,#008146);text-decoration:none;white-space:nowrap}
-  .demo-open:hover{color:var(--green)}
-  .demo-stage{position:relative;width:100%;height:calc(100vh - 116px);min-height:560px;background:#fff}
-  .dframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:none;background:#fff}
-  .dframe.active{display:block}
-  @media(max-width:760px){ .subnav-acc{flex-wrap:wrap;justify-content:center} .demo-stage{height:calc(100vh - 150px)} }
-
+#p-demos{padding:0}.subnav-acc{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);padding:10px 28px}.tabs-acc{display:flex;gap:6px;background:#EEF1EB;padding:5px;border-radius:30px;border:1px solid var(--line)}.tab-acc{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:14px;color:#6c7a72;padding:9px 17px;border-radius:24px;cursor:pointer;border:none;background:transparent;transition:all .18s;white-space:nowrap}.tab-acc:hover{color:var(--ink)}.tab-acc.active{background:#fff;color:#00402a;box-shadow:0 1px 3px rgba(10,46,33,.16)}.tab-acc .flag-acc{font-weight:800;margin-right:7px;color:var(--green-ink,#008146)}.tab-acc.active .flag-acc{color:var(--green)}.demo-open{font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--green-ink,#008146);text-decoration:none;white-space:nowrap}.demo-open:hover{color:var(--green)}.demo-stage{position:relative;width:100%;height:calc(100vh - 116px);min-height:560px;background:#fff}.dframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:none;background:#fff}.dframe.active{display:block}@media(max-width:760px){.subnav-acc{flex-wrap:wrap;justify-content:center}.demo-stage{height:calc(100vh - 150px)}}
 </style>
 </head>
 <body>
@@ -293,9 +274,9 @@
     <a class="demo-open" id="openlive" href="https://lewisvines.github.io/sage-fr-demo/" target="_blank" rel="noopener">Open full-screen &#8599;</a>
   </div>
   <div class="demo-stage">
-    <iframe class="dframe active" data-c="fr" src="https://lewisvines.github.io/sage-fr-demo/" title="France &middot; Experts-comptables demo" loading="eager"></iframe>
-    <iframe class="dframe" data-c="es" data-src="https://lewisvines.github.io/sage-es-demo/" title="Spain &middot; Asesorías demo"></iframe>
-    <iframe class="dframe" data-c="pt" data-src="https://lewisvines.github.io/sage-pt-demo/" title="Portugal &middot; Contabilistas demo"></iframe>
+    <iframe class="dframe active" data-c="fr" src="https://lewisvines.github.io/sage-fr-demo/" title="France demo" loading="eager"></iframe>
+    <iframe class="dframe" data-c="es" data-src="https://lewisvines.github.io/sage-es-demo/" title="Spain demo"></iframe>
+    <iframe class="dframe" data-c="pt" data-src="https://lewisvines.github.io/sage-pt-demo/" title="Portugal demo"></iframe>
   </div>
 </div>
 
@@ -694,20 +675,7 @@ function showTab(id){
 }
 document.querySelectorAll('.tabnav button').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.t);});});
 document.querySelectorAll('.herojump button[data-go]').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.go);});});
-
-(function(){
-  var fullu={fr:'https://lewisvines.github.io/sage-fr-demo/',es:'https://lewisvines.github.io/sage-es-demo/',pt:'https://lewisvines.github.io/sage-pt-demo/'};
-  function showMarket(c){
-    document.querySelectorAll('.tab-acc').forEach(function(b){b.classList.toggle('active',b.dataset.c===c);});
-    document.querySelectorAll('.dframe').forEach(function(f){
-      if(f.dataset.c===c){ if(!f.getAttribute('src')&&f.dataset.src){f.setAttribute('src',f.dataset.src);} f.classList.add('active'); }
-      else { f.classList.remove('active'); }
-    });
-    var o=document.getElementById('openlive'); if(o){o.setAttribute('href',fullu[c]);}
-  }
-  document.querySelectorAll('.tab-acc').forEach(function(b){b.addEventListener('click',function(){showMarket(b.dataset.c);});});
-})();
-</script>
+(function(){var fullu={fr:'https://lewisvines.github.io/sage-fr-demo/',es:'https://lewisvines.github.io/sage-es-demo/',pt:'https://lewisvines.github.io/sage-pt-demo/'};function showMarket(c){document.querySelectorAll('.tab-acc').forEach(function(b){b.classList.toggle('active',b.dataset.c===c);});document.querySelectorAll('.dframe').forEach(function(f){if(f.dataset.c===c){if(!f.getAttribute('src')&&f.dataset.src){f.setAttribute('src',f.dataset.src);}f.classList.add('active');}else{f.classList.remove('active');}});var o=document.getElementById('openlive');if(o){o.setAttribute('href',fullu[c]);}}document.querySelectorAll('.tab-acc').forEach(function(b){b.addEventListener('click',function(){showMarket(b.dataset.c);});});})();</script>
 
 </body>
 </html>
