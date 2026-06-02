@@ -3,679 +3,209 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Winning in Small Europe · Accountants — Hub (Confidential)</title>
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="description" content="One hub: the Sage accountant web demos for France, Spain and Portugal, the current-state review, and the playbook. Confidential.">
+<title>Winning in Small Europe · Web Estate (Confidential)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
   :root{
     --green:#00D639; --green-d:#00B833; --green-ink:#008146; --forest:#022B1C;
     --ink:#0F0F10; --ink-soft:#3A3A3F; --slate:#46564e; --slate-2:#6c7a72;
     --paper:#FFFFFF; --bone:#F7F8F5; --bone-2:#EEF1EB; --line:#E2E7DE; --line-2:#D2DACE;
     --coral:#E0574E; --coral-bg:#FCEDEB; --cyan:#0E7FA8; --cyan-bg:#E7F4FA;
     --violet:#6A4FB0; --violet-bg:#F0ECFA; --amber:#B07A12; --amber-bg:#FBF3E2;
+    --green-bg:#EAF8F0; --maxw:1080px;
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Hanken Grotesk',Arial,sans-serif;color:var(--ink);background:var(--bone);
-    line-height:1.62;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:880px;margin:0 auto;padding:0 30px}
-
-  /* header */
-  header{background:var(--forest);color:#EAF3EE;padding:62px 0 54px;position:relative;overflow:hidden}
-  header::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(ellipse at 88% -10%,rgba(0,214,57,.22),transparent 50%)}
-  header .wrap{position:relative}
+    line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit}
   .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:20px}
-  .kicker::before{content:"";width:28px;height:1px;background:var(--green)}
-  header h1{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(34px,5.4vw,56px);
-    line-height:1.04;letter-spacing:-.02em;max-width:18ch}
+    text-transform:uppercase;color:var(--green-d);font-weight:600;margin-bottom:20px}
+  .kicker::before{content:"";width:28px;height:1px;background:currentColor}
+  .kicker.on-dark{color:var(--green)}
+
+  /* ===== confidential ribbon ===== */
+  .ribbon{background:var(--forest);color:#BFD3C8;font-size:12px;letter-spacing:.04em;
+    text-align:center;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .ribbon b{color:#fff;font-weight:600}
+
+  /* ===== top wordmark ===== */
+  .topbar{background:var(--forest)}
+  .topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:20px;padding-bottom:4px}
+  .mark{display:flex;align-items:center;gap:11px;color:#fff;font-weight:700;font-size:16px;letter-spacing:-.01em}
+  .mark .dot{width:30px;height:30px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:#04210f;font-weight:800;font-size:18px;line-height:1}
+  .mark .sep{color:rgba(255,255,255,.3);font-weight:400}
+  .mark .wise{color:var(--green)}
+
+  /* ===== header / hero ===== */
+  header{background:var(--forest);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:140%;
+    background:radial-gradient(50% 50% at 50% 50%,rgba(0,214,57,.16),transparent 70%);pointer-events:none}
+  header .wrap{position:relative;padding:48px 28px 76px}
+  header h1{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(34px,5.4vw,58px);
+    line-height:1.04;letter-spacing:-.015em;max-width:18ch}
   header h1 em{font-style:normal;font-weight:700;color:var(--green)}
-  header p{margin-top:20px;max-width:62ch;font-size:17px;color:#BFD3C8}
-  .hmeta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  header .sub{margin-top:22px;max-width:60ch;font-size:17.5px;color:#C7DACF}
+  .hmeta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
   .hmeta span{font-size:11.5px;letter-spacing:.05em;border:1px solid rgba(255,255,255,.2);
-    color:#CFE0D6;padding:5px 11px;border-radius:999px}
+    color:#CFE0D6;padding:6px 13px;border-radius:999px}
+  .hmeta span b{color:#fff;font-weight:600}
 
-  /* contents */
-  nav.toc{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-  nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:11px;padding-bottom:11px}
-  nav.toc a{flex:none;font-size:12.5px;font-weight:600;color:var(--slate);text-decoration:none;
-    padding:7px 13px;border-radius:8px;white-space:nowrap;transition:.2s}
-  nav.toc a:hover{background:var(--bone-2);color:var(--ink)}
+  /* ===== why section ===== */
+  .why{padding:74px 0 30px}
+  .why h2{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(26px,3.6vw,38px);
+    line-height:1.12;letter-spacing:-.01em;max-width:20ch}
+  .why .lead{margin-top:16px;max-width:64ch;font-size:16.5px;color:var(--slate)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 28px;
+    box-shadow:0 1px 2px rgba(15,40,25,.04),0 18px 40px -30px rgba(10,46,33,.5)}
+  .card .ix{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;
+    font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:16px;color:#fff;margin-bottom:16px}
+  .card.c1 .ix{background:var(--coral)} .card.c2 .ix{background:var(--cyan)}
+  .card.c3 .ix{background:var(--violet)} .card.c4 .ix{background:var(--green-d)}
+  .card h3{font-size:17.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
+  .card p{font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+  .card p b{color:var(--ink);font-weight:600}
 
-  main{padding:18px 0 80px}
-  section{padding:42px 0;border-bottom:1px solid var(--line)}
-  section:last-child{border-bottom:0}
-  .lead-no{font-family:'Schibsted Grotesk',serif;font-size:13px;font-weight:600;letter-spacing:.12em;
-    color:var(--green-d);text-transform:uppercase;margin-bottom:10px}
-  h2{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(26px,3.6vw,34px);
-    letter-spacing:-.015em;line-height:1.1;margin-bottom:14px}
-  h3{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:20px;margin:30px 0 10px;letter-spacing:-.01em}
-  p{margin-bottom:14px;font-size:15.5px;color:#23241F}
-  p.intro{font-size:17px;color:var(--slate)}
-  strong{font-weight:600;color:var(--ink)}
-  em.i{font-style:italic}
-  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;
-    background:var(--bone-2);padding:1px 6px;border-radius:5px;color:var(--green-ink)}
-  a.link{color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(4,184,110,.4)}
+  /* ===== routes (the two options) ===== */
+  .routes{padding:36px 0 84px}
+  .routes .ey{text-align:center;margin-bottom:30px}
+  .routes .ey .kicker{margin-bottom:14px}
+  .routes .ey h2{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(23px,3vw,32px);letter-spacing:-.01em}
+  .routes .ey p{margin-top:10px;color:var(--slate);font-size:15.5px}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:760px){.opts{grid-template-columns:1fr}}
+  .opt{position:relative;display:flex;flex-direction:column;background:var(--paper);
+    border:1px solid var(--line);border-radius:20px;padding:0 0 28px;text-decoration:none;color:var(--ink);
+    overflow:hidden;transition:transform .22s cubic-bezier(.2,.7,.2,1),border-color .22s,box-shadow .22s;
+    box-shadow:0 1px 2px rgba(15,40,25,.04),0 24px 50px -34px rgba(10,46,33,.45)}
+  .opt:hover{transform:translateY(-5px);border-color:var(--green-d);
+    box-shadow:0 2px 4px rgba(15,40,25,.05),0 40px 70px -34px rgba(10,46,33,.6)}
+  .opt .top{height:7px;background:linear-gradient(90deg,var(--green),var(--green-d))}
+  .opt.acc .top{background:linear-gradient(90deg,#0E7FA8,#1AA0CF)}
+  .opt .inner{padding:28px 30px 0}
+  .opt .flags{display:flex;gap:7px;margin-bottom:18px}
+  .opt .flags .fl{font-size:11px;font-weight:700;letter-spacing:.04em;background:var(--bone-2);
+    color:var(--green-ink);border:1px solid var(--line);padding:4px 9px;border-radius:7px}
+  .opt.acc .flags .fl{color:var(--cyan)}
+  .opt .lab{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate-2);font-weight:600;margin-bottom:8px}
+  .opt h3{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:25px;line-height:1.12;letter-spacing:-.01em;margin-bottom:12px}
+  .opt p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;min-height:66px}
+  .opt .go{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-weight:600;font-size:15px;color:var(--green-ink)}
+  .opt.acc .go{color:var(--cyan)}
+  .opt .go svg{width:17px;height:17px;transition:transform .22s}
+  .opt:hover .go svg{transform:translate(3px,-3px)}
 
-  /* do/dont */
-  .ddgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
-  @media(max-width:720px){.ddgrid{grid-template-columns:1fr}}
-  .col{border-radius:16px;padding:22px 22px 8px;border:1px solid var(--line)}
-  .col.do{background:linear-gradient(180deg,#F0FBF5,#fff)}
-  .col.dont{background:linear-gradient(180deg,#FDF1EF,#fff)}
-  .col h4{font-family:'Schibsted Grotesk',serif;font-size:16px;display:flex;align-items:center;gap:9px;margin-bottom:14px}
-  .col.do h4{color:var(--green-ink)} .col.dont h4{color:var(--coral)}
-  .badge{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-weight:700;font-size:14px}
-  .col.do .badge{background:var(--green);color:#053} .col.dont .badge{background:var(--coral);color:#fff}
-  .item{padding:0 0 16px;margin-bottom:16px;border-bottom:1px dashed var(--line-2)}
-  .item:last-child{border-bottom:0}
-  .item b{display:block;font-size:14px;margin-bottom:3px}
-  .item span{font-size:13px;color:var(--slate);line-height:1.5}
-
-  /* tables */
-  .tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;
-    border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .tbl th{background:var(--forest);color:#EAF3EE;text-align:left;padding:11px 13px;font-weight:600;font-size:12.5px;letter-spacing:.02em}
-  .tbl td{padding:11px 13px;border-top:1px solid var(--line);vertical-align:top;color:#23241F}
-  .tbl tr:nth-child(even) td{background:var(--bone)}
-  .tbl td b{color:var(--ink)}
-  .sc{font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:15px}
-  .s5{color:var(--green-d)}.s4{color:var(--green-ink)}.s3{color:var(--amber)}.s2{color:var(--coral)}.s1{color:var(--coral)}
-  .dim{font-weight:600}
-
-  /* scorecard header card */
-  .scard{display:flex;align-items:center;gap:18px;padding:18px 20px;border-radius:14px;
-    border:1px solid var(--line);margin:26px 0 4px}
-  .scard .tot{font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:30px;line-height:1}
-  .scard .tot small{display:block;font-family:'Hanken Grotesk';font-size:11px;font-weight:600;color:var(--slate);letter-spacing:.05em;margin-top:3px}
-  .scard .desc b{font-size:16px} .scard .desc span{font-size:13px;color:var(--slate)}
-  .flagchip{font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:13px;padding:6px 12px;border-radius:8px;color:#fff}
-  .fr{background:var(--cyan)} .es{background:var(--green-d)} .pt{background:var(--violet)}
-
-  /* callout */
-  .call{display:flex;gap:15px;align-items:flex-start;border-radius:14px;padding:18px 20px;margin:20px 0}
-  .call.key{background:var(--amber-bg);border:1px solid #EAD9AC}
-  .call.win{background:#EAF8F0;border:1px solid #BFE6CF}
-  .call .ci{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
-    font-family:'Schibsted Grotesk',serif;font-weight:700;color:#fff}
-  .call.key .ci{background:var(--amber)} .call.win .ci{background:var(--green-d)}
-  .call h4{font-size:14px;margin-bottom:4px} .call p{font-size:13.5px;color:#33352d;margin:0}
-
-  /* steps */
-  ol.steps{counter-reset:s;list-style:none;margin:14px 0}
-  ol.steps li{position:relative;padding:0 0 18px 50px;margin-bottom:0}
-  ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-2px;
-    width:34px;height:34px;border-radius:9px;background:var(--forest);color:var(--green);
-    font-family:'Schibsted Grotesk',serif;font-weight:700;display:grid;place-items:center}
-  ol.steps li::after{content:"";position:absolute;left:16px;top:34px;bottom:2px;width:1px;background:var(--line-2)}
-  ol.steps li:last-child::after{display:none}
-  ol.steps b{display:block;font-size:15px;margin-bottom:3px}
-  ol.steps span{font-size:13.5px;color:var(--slate)}
-
-  footer{background:var(--forest);color:#9FBBAC;padding:34px 0;font-size:12.5px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
-  footer .pill{border:1px solid rgba(255,255,255,.18);padding:5px 11px;border-radius:999px}
-  @media print{nav.toc{display:none}header{padding:30px 0}section{padding:24px 0}}
-
-/* ===== review-only rules ===== */
-
-  :root{
-    --green:#00D639; --green-d:#00B833; --green-ink:#008146; --forest:#022B1C;
-    --ink:#0F0F10; --slate:#46564e; --slate-2:#6c7a72;
-    --paper:#FFFFFF; --bone:#F7F8F5; --bone-2:#EEF1EB; --line:#E2E7DE; --line-2:#D2DACE;
-    --coral:#E0574E; --coral-bg:#FCEDEB; --cyan:#0E7FA8; --cyan-bg:#E7F4FA;
-    --violet:#6A4FB0; --violet-bg:#F0ECFA; --amber:#B07A12; --amber-bg:#FBF3E2;
-    --green-bg:#EAF8F0;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Hanken Grotesk',Arial,sans-serif;color:var(--ink);background:var(--bone);line-height:1.62;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:880px;margin:0 auto;padding:0 30px}
-
-  header{background:var(--forest);color:#EAF3EE;padding:60px 0 52px;position:relative;overflow:hidden}
-  header::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 88% -10%,rgba(0,214,57,.22),transparent 50%)}
-  header .wrap{position:relative}
-  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:20px}
-  .kicker::before{content:"";width:28px;height:1px;background:var(--green)}
-  header h1{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.02em;max-width:19ch}
-  header h1 em{font-style:normal;font-weight:700;color:var(--green)}
-  header p{margin-top:20px;max-width:64ch;font-size:17px;color:#BFD3C8}
-  .hmeta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
-  .hmeta span{font-size:11.5px;letter-spacing:.05em;border:1px solid rgba(255,255,255,.2);color:#CFE0D6;padding:5px 11px;border-radius:999px}
-
-  nav.toc{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-  nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 30px}
-  nav.toc a{flex:none;font-size:12.5px;font-weight:600;color:var(--slate);text-decoration:none;padding:7px 13px;border-radius:8px;white-space:nowrap}
-  nav.toc a:hover{background:var(--bone-2);color:var(--ink)}
-
-  main{padding:14px 0 70px}
-  section{padding:40px 0;border-bottom:1px solid var(--line)}
-  section:last-child{border-bottom:0}
-  .lead-no{font-family:'Schibsted Grotesk',serif;font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--green-d);text-transform:uppercase;margin-bottom:10px}
-  h2{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(25px,3.4vw,33px);letter-spacing:-.015em;line-height:1.1;margin-bottom:12px}
-  h3{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:18px;margin:24px 0 8px;letter-spacing:-.01em}
-  p{margin-bottom:13px;font-size:15.5px;color:#23241F}
-  p.intro{font-size:17px;color:var(--slate)}
-  strong{font-weight:600;color:var(--ink)}
-  em.i{font-style:italic}
-  code{font-family:ui-monospace,Menlo,monospace;font-size:.84em;background:var(--bone-2);padding:1px 6px;border-radius:5px;color:var(--green-ink);word-break:break-all}
-  a.link{color:var(--green-d);text-decoration:none;border-bottom:1px solid rgba(4,184,110,.4)}
-
-  /* country block */
-  .cblock{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:8px;background:var(--paper)}
-  .cbar{display:flex;align-items:center;gap:16px;padding:18px 22px;color:#fff}
-  .cbar.fr{background:linear-gradient(100deg,var(--cyan),#0a6789)}
-  .cbar.es{background:linear-gradient(100deg,var(--green-d),#037a4b)}
-  .cbar.pt{background:linear-gradient(100deg,var(--violet),#4a3590)}
-  .cflag{font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:18px;background:rgba(255,255,255,.16);padding:6px 13px;border-radius:9px}
-  .cbar .ct{flex:1} .cbar .ct b{font-size:17px;display:block} .cbar .ct span{font-size:13px;opacity:.9}
-  .cbar .verdict{text-align:right;font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.9}
-  .cbar .verdict b{font-family:'Schibsted Grotesk',serif;font-size:19px;display:block;letter-spacing:0;text-transform:none}
-  .cbody{padding:22px 24px}
-  .cbody .src{font-size:12px;color:var(--slate-2);margin-bottom:16px;padding-bottom:14px;border-bottom:1px dashed var(--line-2)}
-  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px}
-  @media(max-width:640px){.twocol{grid-template-columns:1fr}}
-  .mini h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-  .mini.keep h4{color:var(--green-ink)} .mini.gap h4{color:var(--coral)}
-  .mini ul{list-style:none;display:grid;gap:9px}
-  .mini li{font-size:13.5px;color:#2c2e28;padding-left:18px;position:relative;line-height:1.45}
-  .mini.keep li::before{content:"✓";position:absolute;left:0;color:var(--green-d);font-weight:700}
-  .mini.gap li::before{content:"✕";position:absolute;left:0;color:var(--coral);font-weight:700}
-  .takeaway{margin-top:18px;background:var(--bone);border-left:3px solid var(--green-d);border-radius:0 10px 10px 0;padding:13px 16px;font-size:13.5px}
-  .takeaway b{color:var(--ink)}
-
-  .tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .tbl th{background:var(--forest);color:#EAF3EE;text-align:left;padding:11px 13px;font-weight:600;font-size:12.5px}
-  .tbl td{padding:11px 13px;border-top:1px solid var(--line);vertical-align:top}
-  .tbl tr:nth-child(even) td{background:var(--bone)}
-  .rank{font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:16px}
-  .r1{color:var(--coral)}.r2{color:var(--amber)}.r3{color:var(--green-d)}
-  .hi{font-weight:700;color:var(--coral)}.me{font-weight:700;color:var(--amber)}.lo{font-weight:700;color:var(--green-d)}
-
-  .call{display:flex;gap:15px;align-items:flex-start;border-radius:14px;padding:18px 20px;margin:20px 0}
-  .call.key{background:var(--amber-bg);border:1px solid #EAD9AC}
-  .call.rec{background:var(--green-bg);border:1px solid #BFE6CF}
-  .call .ci{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:'Schibsted Grotesk',serif;font-weight:700;color:#fff}
-  .call.key .ci{background:var(--amber)} .call.rec .ci{background:var(--green-d)}
-  .call h4{font-size:14px;margin-bottom:4px} .call p{font-size:13.5px;color:#33352d;margin:0}
-
-  footer{background:var(--forest);color:#9FBBAC;padding:32px 0;font-size:12.5px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
-  footer .pill{border:1px solid rgba(255,255,255,.18);padding:5px 11px;border-radius:999px}
-  @media print{nav.toc{display:none}header{padding:28px 0}section{padding:22px 0}}
-
-
-/* ---------- single-page shell ---------- */
-.tabwrap{position:sticky;top:0;z-index:60;background:rgba(10,46,33,.97);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.12)}
-.tabwrap .wrap{display:flex;align-items:center;gap:16px;min-height:58px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
-.brandm{font-family:'Schibsted Grotesk',serif;font-weight:700;font-style:normal;font-weight:700;color:var(--green);font-size:20px;letter-spacing:-.02em;flex:none}
-.brandm small{font-family:'Hanken Grotesk',sans-serif;font-style:normal;font-weight:600;font-size:11px;letter-spacing:.05em;color:#8FB3A2;margin-left:8px}
-.tabnav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-.tabnav button{font:inherit;font-weight:600;font-size:13px;color:#C2D6CB;background:none;border:0;padding:8px 15px;border-radius:9px;cursor:pointer;transition:background .15s,color .15s}
-.tabnav button:hover{background:rgba(255,255,255,.08);color:#fff}
-.tabnav button.on{background:var(--green);color:var(--forest)}
-.panel[hidden]{display:none}
-.hero2{background:var(--forest);color:#EAF3EE;padding:58px 0 8px;position:relative;overflow:hidden}
-.hero2::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 86% -12%,rgba(0,214,57,.22),transparent 54%)}
-.hero2 .wrap{position:relative}
-.hero2 .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:18px}
-.hero2 .kicker::before{content:"";width:28px;height:1px;background:var(--green)}
-.hero2 h1{font-family:'Schibsted Grotesk',serif;font-weight:600;font-size:clamp(30px,5vw,50px);line-height:1.04;letter-spacing:-.02em;max-width:20ch}
-.hero2 h1 em{font-style:normal;font-weight:700;color:var(--green)}
-.hero2 p.sub{margin-top:18px;max-width:62ch;font-size:17px;color:#BFD3C8}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
-@media(max-width:760px){.cards{grid-template-columns:1fr}}
-.ccard{display:flex;flex-direction:column;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:20px;text-decoration:none;color:#EAF3EE;transition:transform .2s,border-color .2s,background .2s}
-.ccard:hover{transform:translateY(-3px);border-color:var(--green);background:rgba(255,255,255,.08)}
-.ccard .cf{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.ccard .flag{font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:14px;background:rgba(255,255,255,.14);padding:5px 11px;border-radius:8px}
-.ccard .st{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--green);text-align:right}
-.ccard h3{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;margin:0 0 6px;letter-spacing:-.01em}
-.ccard p{font-size:13px;color:#B5C7BD;margin:0 0 18px;line-height:1.5}
-.ccard .go{margin-top:auto;font-weight:600;font-size:13px;color:var(--green);display:inline-flex;align-items:center;gap:7px}
-.ccard .go svg{width:14px;height:14px}
-.herojump{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;padding-bottom:8px}
-.herojump button{font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;border-radius:999px;padding:10px 18px;border:1px solid rgba(255,255,255,.26);background:transparent;color:#EAF3EE;display:inline-flex;align-items:center;gap:8px;transition:background .15s,border-color .15s}
-.herojump button:hover{border-color:var(--green);background:rgba(0,214,57,.1)}
-.herojump button.primary{background:var(--green);color:var(--forest);border-color:var(--green)}
-.deploybar{background:var(--bone-2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:26px 0 4px;font-size:13px;color:var(--slate);display:flex;gap:12px;align-items:flex-start}
-.deploybar b{color:var(--ink)}
-.deploybar .di{flex:none;width:24px;height:24px;border-radius:7px;background:var(--green-d);color:#fff;display:grid;place-items:center;font-family:'Schibsted Grotesk',serif;font-weight:700;font-size:13px}
-
-#p-demos{padding:0}.subnav-acc{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);padding:10px 28px}.tabs-acc{display:flex;gap:6px;background:#EEF1EB;padding:5px;border-radius:30px;border:1px solid var(--line)}.tab-acc{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:14px;color:#6c7a72;padding:9px 17px;border-radius:24px;cursor:pointer;border:none;background:transparent;transition:all .18s;white-space:nowrap}.tab-acc:hover{color:var(--ink)}.tab-acc.active{background:#fff;color:#00402a;box-shadow:0 1px 3px rgba(10,46,33,.16)}.tab-acc .flag-acc{font-weight:800;margin-right:7px;color:var(--green-ink,#008146)}.tab-acc.active .flag-acc{color:var(--green)}.demo-open{font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--green-ink,#008146);text-decoration:none;white-space:nowrap}.demo-open:hover{color:var(--green)}.demo-stage{position:relative;width:100%;height:calc(100vh - 116px);min-height:560px;background:#fff}.dframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:none;background:#fff}.dframe.active{display:block}@media(max-width:760px){.subnav-acc{flex-wrap:wrap;justify-content:center}.demo-stage{height:calc(100vh - 150px)}}
+  /* ===== footer ===== */
+  footer{background:var(--forest);color:#9FBBAE;padding:34px 0;font-size:13px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  footer b{color:#fff;font-weight:600}
+  footer .r{display:flex;gap:8px;flex-wrap:wrap}
+  footer .r span{border:1px solid rgba(255,255,255,.16);padding:4px 11px;border-radius:999px}
 </style>
 </head>
 <body>
 
-<div class="tabwrap">
+<div class="ribbon">CONFIDENTIAL · WiSE programme · concept &amp; review material — <b>not for publication</b></div>
+
+<div class="topbar">
   <div class="wrap">
-    <span class="brandm">Sage<small>WiSE · Accountants</small></span>
-    <div class="tabnav">
-      <button class="on" data-t="p-demos">Demos</button>
-      <button data-t="p-review">Current State</button>
-      <button data-t="p-playbook">Playbook</button>
-    </div>
+    <span class="mark"><span class="dot">+</span> Sage <span class="sep">|</span> <span class="wise">WiSE</span> · Web Estate</span>
   </div>
 </div>
 
-<div class="panel" id="p-demos">
-  <div class="subnav-acc">
-    <div class="tabs-acc" role="tablist" aria-label="Choose market">
-      <button class="tab-acc active" data-c="fr"><span class="flag-acc">FR</span>France</button>
-      <button class="tab-acc" data-c="es"><span class="flag-acc">ES</span>España</button>
-      <button class="tab-acc" data-c="pt"><span class="flag-acc">PT</span>Portugal</button>
-    </div>
-    <a class="demo-open" id="openlive" href="https://lewisvines.github.io/sage-fr-demo/" target="_blank" rel="noopener">Open full-screen &#8599;</a>
-  </div>
-  <div class="demo-stage">
-    <iframe class="dframe active" data-c="fr" src="https://lewisvines.github.io/sage-fr-demo/" title="France demo" loading="eager"></iframe>
-    <iframe class="dframe" data-c="es" data-src="https://lewisvines.github.io/sage-es-demo/" title="Spain demo"></iframe>
-    <iframe class="dframe" data-c="pt" data-src="https://lewisvines.github.io/sage-pt-demo/" title="Portugal demo"></iframe>
-  </div>
-</div>
-
-<div class="panel" id="p-review" hidden><main>
-
-<section id="how">
+<header>
   <div class="wrap">
-    <div class="lead-no">00 — Method</div>
-    <h2>The baseline is the argument</h2>
-    <p class="intro">The fastest way to win buy-in for a redesign is not to show the shiny demo first — it's to show, plainly and fairly, what a prospect sees today, and let the gap speak. Each page below is reviewed on its own terms: what it's doing well, where it falls short of the WiSE standard, and what that means commercially.</p>
-    <p>Each market is then placed on four buy-in dimensions: <strong>regulatory urgency</strong> (how hard the clock is ticking), <strong>page gap</strong> (distance from the standard), <strong>strategic stakes</strong> (what the channel is worth), and <strong>effort to close</strong>. Together they produce a defensible priority order — not a matter of taste, but of where the gap and the stakes are largest at once.</p>
-    <div class="call key">
-      <div class="ci">i</div>
-      <div><h4>A note on fairness</h4><p>These are real, working pages built by teams under real constraints. The point is not that the work is poor — it's that the market changed underneath it. The regulatory cliff is new; the pages largely predate it. That's the gap worth funding.</p></div>
+    <span class="kicker on-dark">Winning in Small Europe · Web Estate</span>
+    <h1>Two channels, four markets, <em>one standard</em> for the web.</h1>
+    <p class="sub">A compliance window is opening across France, Spain, Germany and Portugal — and the website is where that intent lands. This is the single place to review both halves of the estate, see the case for upgrading each one, and hold every page to the same bar.</p>
+    <div class="hmeta">
+      <span><b>4</b> markets · FR · ES · DE · PT</span>
+      <span><b>2</b> channels · Accountant &amp; Active</span>
+      <span><b>1</b> playbook standard</span>
+    </div>
+  </div>
+</header>
+
+<section class="why">
+  <div class="wrap">
+    <span class="kicker">Why we upgrade now</span>
+    <h2>The web estate isn't ready for the moment it's about to meet.</h2>
+    <p class="lead">Across both channels the picture is the same: strong intent arriving at pages that read as generic, inconsistent, and a step behind the regulation driving the demand. Four reasons it can't wait.</p>
+    <div class="grid">
+      <div class="card c1">
+        <span class="ix">1</span>
+        <h3>A compliance window that won't repeat</h3>
+        <p>E-invoicing and continuous-compliance mandates are forcing every small business and their accountant to act — <b>France from September 2026</b>, Spain on VeriFactu &amp; Crea y Crece, Germany's E-Rechnung receipt duty, Portugal's ATCUD / SAF-T regime. This is the largest demand event in years, and the web is where it lands.</p>
+      </div>
+      <div class="card c2">
+        <span class="ix">2</span>
+        <h3>An estate that doesn't feel local</h3>
+        <p>Pan-European screenshots carry foreign names and stray typos, social proof is thin where it should be strongest, and <b>Portugal has no Active page at all</b>. It reads as generic at the exact moment buyers want local certainty about their own obligation.</p>
+      </div>
+      <div class="card c3">
+        <span class="ix">3</span>
+        <h3>Mixed messages, market to market</h3>
+        <p>Promo end-dates drift between countries, and the compliance hook that should lead every page is front-and-centre in France, thin in Spain and receive-only in Germany. <b>Inconsistency erodes the trust</b> that converts a worried buyer into a trial.</p>
+      </div>
+      <div class="card c4">
+        <span class="ix">4</span>
+        <h3>One standard, and a way to hold it</h3>
+        <p>Each channel carries a playbook for what a <b>"good" country page</b> looks like — local regulatory clock, named compliance mechanism, real proof, one clear offer. Every demo is built to it and every live site measured against it, so the bar holds as we scale across markets.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FRANCE -->
-<section id="fr">
-  <div class="lead-no wrap">01 — France</div>
+<section class="routes">
   <div class="wrap">
-    <div class="cblock">
-      <div class="cbar fr">
-        <span class="cflag">FR</span>
-        <div class="ct"><b>France · Experts-comptables</b><span>The hard-cliff market — and the widest gap</span></div>
-        <div class="verdict">Priority<b>Highest</b></div>
-      </div>
-      <div class="cbody">
-        <div class="src">Reviewed: <code>sage.com/fr-fr/experts-comptables/produits/</code> and the experts-comptables product set. &nbsp;<a class="link" href="https://lewisvines.github.io/sage-fr-demo/" target="_blank" rel="noopener">View the WiSE France demo →</a></div>
-        <h3>What the page is today</h3>
-        <p>A long product catalogue — roughly eighteen products grouped by verb (<em class="i">Automatiser, Communiquer, Produire, Conseiller</em>): Génération Experts Connect, Sage Service Paie, Supervizor, Conciliator Expert, Beeye, transfertBANQUE, Waibi, Smartisi, MyPassPro, Compta Collaborative, LinkUp Experts, and more — followed by a generic article carousel and standard "be called back / contact Sage" CTAs.</p>
-        <div class="twocol">
-          <div class="mini keep"><h4>What works</h4><ul>
-            <li>Genuine product depth — the portfolio breadth is real</li>
-            <li>Strong institutional proof points (CNOEC / CJEC partnerships) exist elsewhere on the site</li>
-            <li>Génération Experts is correctly positioned as the production core</li>
-          </ul></div>
-          <div class="mini gap"><h4>The gap vs the standard</h4><ul>
-            <li><b>No regulatory story at all</b> — the September 2026 e-invoicing cliff, the single biggest thing on every French accountant's mind, is absent</li>
-            <li>No mention of AKAO, the Approved Platform (PA), the PPF, or Sage's compliance readiness</li>
-            <li>Product-led, not customer-led — opens on features, not the client's reality</li>
-            <li>Fragmented, legacy naming ("anciennement Coala"; Conciliator, Supervizor, Waibi, Smartisi…) with no "one platform" story</li>
-            <li>Stale content — the article carousel still references the <em class="i">France 2023</em> Rugby World Cup</li>
-            <li>No pricing, no roadmap, no AI narrative, generic CTAs</li>
-          </ul></div>
+    <div class="ey">
+      <span class="kicker">Review the estate</span>
+      <h2>Choose a channel to open its review.</h2>
+      <p>Each opens its own hub — the market demos, the current-state case, and the playbook.</p>
+    </div>
+    <div class="opts">
+
+      <a class="opt acc" href="https://lewisvines.github.io/wise-accountants-web-hub/">
+        <span class="top"></span>
+        <div class="inner">
+          <div class="flags"><span class="fl">FR</span><span class="fl">ES</span><span class="fl">PT</span></div>
+          <div class="lab">Accountant channel</div>
+          <h3>Review WiSE Accountant Websites</h3>
+          <p>The accountant-channel web across France, Spain and Portugal — three market demos, the current-state case for prioritising each redesign, and the playbook that holds the standard together.</p>
+          <span class="go">Open the accountant review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
         </div>
-        <div class="takeaway"><b>Why it's first:</b> France has the clearest, hardest regulatory deadline of the three <em class="i">and</em> the page that says least about it. A prospect arriving with "what do I do about September 2026?" finds a product list and a two-year-old rugby article. The gap between market urgency and page content is at its maximum here — which is exactly where a redesign returns the most.</div>
-      </div>
-    </div>
-  </div>
-</section>
+      </a>
 
-<!-- SPAIN -->
-<section id="es">
-  <div class="lead-no wrap">02 — Spain</div>
-  <div class="wrap">
-    <div class="cblock">
-      <div class="cbar es">
-        <span class="cflag">ES</span>
-        <div class="ct"><b>Spain · Asesorías y Despachos</b><span>The most mature page — needs sharpening, not rebuilding</span></div>
-        <div class="verdict">Priority<b>Medium</b></div>
-      </div>
-      <div class="cbody">
-        <div class="src">Reviewed: <code>sage.com/es-es/software-asesorias-y-despachos/</code>, the Despachos and SfA product pages, and the asesorías blog. &nbsp;<a class="link" href="https://lewisvines.github.io/sage-es-demo/" target="_blank" rel="noopener">View the WiSE Spain demo →</a></div>
-        <h3>What the page is today</h3>
-        <p>A value-led landing page — "software that takes your firm beyond tax and accounting," with "Automatización y Crecimiento" framing — anchored on Sage Despachos Connected and the ContaPlus heritage, with Sage for Accountants (two business models) present. Crucially, the regulatory hook <em class="i">is</em> surfaced: product copy references adapting to "las nuevas normas de facturación como Verifactu o factura electrónica," and the blog is actively maintained (2026 fiscal calendar, "VeriFactu Ready," 2026 tax updates).</p>
-        <div class="twocol">
-          <div class="mini keep"><h4>What works</h4><ul>
-            <li>Regulatory reality is present — VeriFactu and factura electrónica appear, not absent as in FR</li>
-            <li>Sage for Accountants is surfaced, with a clear two-model choice</li>
-            <li>Content engine is current and credible — active 2026 advisory content</li>
-            <li>Value-led framing ("beyond tax and accounting") is closer to customer-voice</li>
-          </ul></div>
-          <div class="mini gap"><h4>The gap vs the standard</h4><ul>
-            <li>The regulatory hook is <b>buried in product copy</b>, not leading the page as the wedge</li>
-            <li>No "two clocks, one platform" clarity — VeriFactu and Crea y Crece aren't framed as a single Sage answer</li>
-            <li>Legacy naming persists (Despachos Connected, ContaPlus) with overlapping lines</li>
-            <li>Still suite/product-structured rather than narrative (clock → platform → roadmap → AI → pricing)</li>
-          </ul></div>
+      <a class="opt act" href="https://lewisvines.github.io/Sage-Active-web-hub/">
+        <span class="top"></span>
+        <div class="inner">
+          <div class="flags"><span class="fl">FR</span><span class="fl">ES</span><span class="fl">DE</span><span class="fl">PT</span></div>
+          <div class="lab">Sage Active product</div>
+          <h3>Review WiSE Active Websites</h3>
+          <p>The Sage Active product web across France, Spain, Germany and Portugal — localised hero concepts in native language and English, the current-state review, and the same playbook standard.</p>
+          <span class="go">Open the Active review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
         </div>
-        <div class="takeaway"><b>Why it's medium:</b> Spain is closest to the standard already — the raw materials (regulatory hook, SfA, current content) are on the page. The work is editorial, not foundational: lead with the dual-clock, consolidate the naming, and lift SfA above the fold. High return for relatively low effort.</div>
-      </div>
+      </a>
+
     </div>
   </div>
 </section>
-
-<!-- PORTUGAL -->
-<section id="pt">
-  <div class="lead-no wrap">03 — Portugal</div>
-  <div class="wrap">
-    <div class="cblock">
-      <div class="cbar pt">
-        <span class="cflag">PT</span>
-        <div class="ct"><b>Portugal · Contabilistas</b><span>Good flagship, fragmented estate, dated terminology</span></div>
-        <div class="verdict">Priority<b>Medium</b></div>
-      </div>
-      <div class="cbody">
-        <div class="src">Reviewed: <code>sage.com/pt-pt/contabilistas/sage-for-accountants/</code> (+ pricing), and the Sage One / Sage&nbsp;50 / Sage&nbsp;100 Contabilidade lines. &nbsp;<a class="link" href="https://lewisvines.github.io/sage-pt-demo/" target="_blank" rel="noopener">View the WiSE Portugal demo →</a></div>
-        <h3>What the page is today</h3>
-        <p>The Sage for Accountants flagship is decent: an integrated accounting / payroll / asset / practice-management proposition, with a real pricing page and a desktop-vs-cloud choice. Compliance is grounded correctly in Portugal's actual reality — SVAT certification (the AT validation seal), SAF-T (PT), and IES/DA — rather than a borrowed "deadline" narrative. But around it sits a fragmented legacy estate (Sage One, Sage 50 Contabilidade, Sage 100 Contabilidade) with overlapping positioning.</p>
-        <div class="twocol">
-          <div class="mini keep"><h4>What works</h4><ul>
-            <li>SfA flagship is clear, with transparent pricing and a model choice</li>
-            <li>Compliance is correctly grounded in PT reality (SVAT, SAF-T, IES/DA)</li>
-            <li>Active advisory blog content for contabilistas</li>
-          </ul></div>
-          <div class="mini gap"><h4>The gap vs the standard</h4><ul>
-            <li>Fragmented portfolio — SfA competes with Sage One, Sage 50 and Sage 100 for the same buyer</li>
-            <li><b>Dated terminology</b> — "Sage One TOC" still uses the deprecated "TOC" label (the profession is now <em class="i">Contabilista Certificado</em>)</li>
-            <li>Sage's own PT content uses "migrar / migração" — the banned change word</li>
-            <li>No single narrative arc; product pages rather than a customer journey</li>
-          </ul></div>
-        </div>
-        <div class="takeaway"><b>Why it's medium (and a useful mirror):</b> the real PT page is actually <em class="i">better grounded</em> in local regulation than our own PT demo, which over-rotated to a "2027 cliff." The work here is consolidation and terminology — collapse the estate behind SfA, retire "TOC," and remove "migração" — more than a ground-up rebuild.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRIORITY -->
-<section id="priority">
-  <div class="wrap">
-    <div class="lead-no">04 — The ranking</div>
-    <h2>Where to spend the effort, and why</h2>
-    <p class="intro">Four dimensions, scored High / Medium / Low. Priority is highest where urgency and page-gap are both high — i.e. where the market is moving fastest and the page is least ready.</p>
-    <table class="tbl">
-      <tr><th>Market</th><th>Regulatory urgency</th><th>Page gap</th><th>Strategic stakes</th><th>Effort to close</th><th>Priority</th></tr>
-      <tr>
-        <td><b>France</b></td>
-        <td><span class="hi">High</span> — hard cliff Sept 2026/27</td>
-        <td><span class="hi">High</span> — no regulatory story</td>
-        <td><span class="hi">High</span> — flagship WiSE market</td>
-        <td><span class="me">Medium</span> — full rebuild</td>
-        <td><span class="rank r1">1 · Now</span></td>
-      </tr>
-      <tr>
-        <td><b>Spain</b></td>
-        <td><span class="me">Medium</span> — 2027–28, dual clock</td>
-        <td><span class="me">Medium</span> — hook present but buried</td>
-        <td><span class="hi">High</span> — large despachos base</td>
-        <td><span class="lo">Low</span> — editorial sharpening</td>
-        <td><span class="rank r2">2 · Next</span></td>
-      </tr>
-      <tr>
-        <td><b>Portugal</b></td>
-        <td><span class="lo">Low–Med</span> — continuous, deferred</td>
-        <td><span class="me">Medium</span> — fragmented estate</td>
-        <td><span class="me">Medium</span></td>
-        <td><span class="me">Medium</span> — consolidation</td>
-        <td><span class="rank r3">3 · Then</span></td>
-      </tr>
-    </table>
-    <div class="call key">
-      <div class="ci">!</div>
-      <div><h4>The one-line case</h4><p>France is the only market where the highest regulatory urgency meets the widest page gap. Updating it first protects the flagship WiSE market at the exact moment its prospects are actively searching for answers the current page doesn't give.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- RECOMMENDATION -->
-<section id="rec">
-  <div class="wrap">
-    <div class="lead-no">05 — Recommendation</div>
-    <h2>A sequenced, low-risk path</h2>
-    <p class="intro">Each step compounds: the France rebuild produces the master template; Spain and Portugal then inherit it, so each subsequent market is faster and more consistent than the last.</p>
-    <table class="tbl">
-      <tr><th style="width:60px">Step</th><th>Move</th><th>Why now</th></tr>
-      <tr><td><b>1</b></td><td>Rebuild <b>France</b> on the WiSE standard — French, September-2026 hook, AKAO/PPF surfaced, three-phase roadmap. Extract it as the master template.</td><td>Largest gap × highest urgency; creates the reusable base.</td></tr>
-      <tr><td><b>2</b></td><td><b>Spain</b> — re-front the existing page on the master: lead with the dual clock, consolidate naming, lift SfA above the fold.</td><td>Closest to standard; editorial effort, fast win, large base.</td></tr>
-      <tr><td><b>3</b></td><td><b>Portugal</b> — consolidate the estate behind SfA on the master; retire "TOC," remove "migração," keep the strong SVAT/SAF-T grounding.</td><td>Mostly consolidation; lowest urgency, so it waits — but inherits everything.</td></tr>
-      <tr><td><b>4</b></td><td>Bank the master template + rubric as the <b>global pattern</b> for the next markets.</td><td>Turns three fixes into a repeatable capability.</td></tr>
-    </table>
-    <div class="call rec">
-      <div class="ci">→</div>
-      <div><h4>What this buys the programme</h4><p>A defensible reason to start with France today, a fast follow in Spain, a tidy consolidation in Portugal — and a tested master template that lets every future Sage market launch a consistent, accurate accountant page in days. The demos show the destination; this review shows why the journey starts where it does.</p></div>
-    </div>
-  </div>
-</section>
-
-</main></div>
-<div class="panel" id="p-playbook" hidden><main>
-
-<section id="why">
-  <div class="wrap">
-    <div class="lead-no">00 — Orientation</div>
-    <h2>The same template cannot ship three times</h2>
-    <p class="intro">Across the three demos there is one strong, repeatable pattern — and three different regulatory truths it is being stretched over. The job of this playbook is to lock the pattern, name the rules that make it work, and give every future market a way to launch fast without losing the things that make it Sage.</p>
-    <p>Two structural facts shape everything below. First, the <strong>regulatory clock is the wedge</strong> on every page — but the clock reads differently in each country, and a copy-pasted "2027" claim is already inaccurate in Portugal. Second, there are <strong>two design systems</strong> quietly competing in the repos: the demo trio's bespoke green (<code>#00D639</code> + Fraunces) and <code>sage-freemium-france</code>'s Sage-brand green (<code>#00dc06</code> + forest + "Sage Text"). Before this becomes the global pattern, the family must converge on one tokenised system.</p>
-    <div class="call key">
-      <div class="ci">!</div>
-      <div><h4>The one principle everything else serves</h4>
-      <p>Lead with the customer's regulatory reality — accurately, per country — framed as their opportunity, never as a Sage product pitch and never with an apology. Acknowledge ≠ apologise. Investment-led, customer-voice, forward-facing.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="principles">
-  <div class="wrap">
-    <div class="lead-no">01 — Principles</div>
-    <h2>What belongs on the page — and what doesn't</h2>
-    <p class="intro">Derived from the strongest shared pattern in the Spain and Portugal builds, pressure-tested against the tone discipline the WiSE programme already runs on.</p>
-
-    <div class="ddgrid">
-      <div class="col do">
-        <h4><span class="badge">✓</span>Include — the winning pattern</h4>
-        <div class="item"><b>An accurate regulatory hook, in the customer's voice</b><span>Open on what changes for <em class="i">their</em> clients, dated to that country's real mandate. "What this means for your firm," not "introducing Sage Active."</span></div>
-        <div class="item"><b>Acknowledge-and-reset, without apology</b><span>The ES demo's "we know the message hasn't always been clear" owns past confusion then resets to a confident forward position. Honest, not sorry.</span></div>
-        <div class="item"><b>Collapse complexity into one Sage answer</b><span>"Two clocks, one platform" (ES). Name the competing obligations, then show a single place to handle them.</span></div>
-        <div class="item"><b>A clear, phased roadmap</b><span>Map to the three-phase France logic: live today / on the roadmap / in discovery. Show direction; never present roadmap items as available now.</span></div>
-        <div class="item"><b>An honest AI position</b><span>"Where we're taking AI in the practice" — a stated direction of travel, not vapour, not over-claim.</span></div>
-        <div class="item"><b>Transparent pricing as a differentiator</b><span>"A clear price for every firm size." Clarity is the competitive wedge in a confused market.</span></div>
-        <div class="item"><b>Five scannable anchors + repeated specific CTAs</b><span>Clock / platform / journey / AI / pricing. CTAs are channel-appropriate and working: <em class="i">Request a demo · Talk to a specialist · Get started</em>.</span></div>
-        <div class="item"><b>Visible proof of compliance standing</b><span>The DGFiP-registered PA (AKAO) for France; VeriFactu/Crea y Crece readiness for Spain. Present, not buried.</span></div>
-      </div>
-
-      <div class="col dont">
-        <h4><span class="badge">✕</span>Exclude — the anti-patterns</h4>
-        <div class="item"><b>Apologetic language</b><span>No "sorry," no "we got it wrong," no mea culpa. It undercuts the investment-led posture and the channel's confidence in Sage.</span></div>
-        <div class="item"><b>The word "migration"</b><span>Banned. It frames change as cost and disruption rather than readiness and growth.</span></div>
-        <div class="item"><b>A product-led hero</b><span>Don't open with feature lists or product names. The customer's regulatory reality is the door; the product is what's behind it.</span></div>
-        <div class="item"><b>A copy-pasted regulatory clock</b><span>The single biggest risk. "In 2027 every client changes how they invoice" is true-ish for FR/ES and <em class="i">wrong</em> for PT. Re-ground per market.</span></div>
-        <div class="item"><b>Wrong or missing localisation</b><span>Every country page must carry the correct language and <code>lang</code> attribute, currency, date format and local regulator names. Verify the outer shell as well as the content on every build.</span></div>
-        <div class="item"><b>Two design systems</b><span>Pick one tokenised system (brand green + agreed type) and hold it. Bespoke per-market palettes break the family and slow replication.</span></div>
-        <div class="item"><b>Bloat &amp; gating on live pages</b><span>Gating is right for stakeholder review (FR), wrong for acquisition. The 880&nbsp;KB encrypted payload and password wall can't ship to the public.</span></div>
-        <div class="item"><b>Overpromised roadmap &amp; competitor-bashing</b><span>Don't show Phase 2/3 as live. Don't attack rivals — win on clarity and readiness, in the customer's voice.</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="rubric">
-  <div class="wrap">
-    <div class="lead-no">02 — The measuring stick</div>
-    <h2>A 10-dimension scoring rubric</h2>
-    <p class="intro">The same ten questions, scored 0–5, for any Sage accountant page in any market. It turns "this feels off" into a number you can act on — and it's what makes fast, consistent iteration possible at global scale.</p>
-    <table class="tbl">
-      <tr><th style="width:30px">#</th><th>Dimension</th><th>What a 5 looks like</th></tr>
-      <tr><td>1</td><td class="dim">Customer-voice hook</td><td>Opens on the customer's regulatory reality as their opportunity; zero product-led framing.</td></tr>
-      <tr><td>2</td><td class="dim">Tone discipline</td><td>Confident, investment-led, forward-facing; acknowledges without apologising; no "migration."</td></tr>
-      <tr><td>3</td><td class="dim">Localisation correctness</td><td>Correct language &amp; <code>lang</code>; regulator names, dates, currency and the <em class="i">specific</em> local mandate are accurate.</td></tr>
-      <tr><td>4</td><td class="dim">Brand / design-system</td><td>One tokenised system: brand colour, agreed type pairing, shared components.</td></tr>
-      <tr><td>5</td><td class="dim">Narrative architecture</td><td>Full arc: clock → platform → roadmap → AI → pricing, with five scannable anchors.</td></tr>
-      <tr><td>6</td><td class="dim">Naming &amp; terminology</td><td>Locked terms throughout (SfA, GE, Sage Prévision, AKAO, PA vs PPF); nothing freelanced.</td></tr>
-      <tr><td>7</td><td class="dim">Proof &amp; trust</td><td>Compliance standing, customer voice and credible evidence are visible and not over-claimed.</td></tr>
-      <tr><td>8</td><td class="dim">CTA strategy</td><td>Specific, repeated, channel-appropriate and <em class="i">working</em> calls to action.</td></tr>
-      <tr><td>9</td><td class="dim">Technical hygiene</td><td>Performance budget met, accessible, correct meta/SEO posture, no gating on live acquisition pages.</td></tr>
-      <tr><td>10</td><td class="dim">Replicability</td><td>Componentised, tokenised, translatable, documented — a new market can fork it in days.</td></tr>
-    </table>
-  </div>
-</section>
-
-<section id="scorecards">
-  <div class="wrap">
-    <div class="lead-no">03 — Country scorecards</div>
-    <h2>Where each market stands today</h2>
-    <p class="intro">Scored against the rubric above, out of 50. <strong>France is the approved gold standard</strong> — signed off by Diego and Jeremy — and sets the benchmark the others are measured against. Its confidential gating is a deliberate, approved choice for stakeholder review, not a fault. Spain and Portugal are scored on their distance from that bar.</p>
-
-    <!-- SPAIN -->
-    <div class="scard" style="background:#EFFCF4;border-color:#BFE6CF">
-      <div class="tot s4">42<small>/ 50</small></div>
-      <div class="desc" style="flex:1"><b><span class="flagchip es">ES</span> &nbsp;Spain · Asesorías</b><br><span>Strongest of the alignable pair. Closest to the France standard already.</span></div>
-    </div>
-    <table class="tbl">
-      <tr><th>Dimension</th><th style="width:46px">Score</th><th>Note &amp; fix</th></tr>
-      <tr><td>Customer-voice hook</td><td><span class="sc s5">5</span></td><td>"Two regulatory clocks, one platform" is accurate (VeriFactu + Crea y Crece) and entirely customer-framed. Keep.</td></tr>
-      <tr><td>Tone discipline</td><td><span class="sc s5">5</span></td><td>The acknowledge-reset panel is the template the others should inherit.</td></tr>
-      <tr><td>Localisation</td><td><span class="sc s4">4</span></td><td>Correct <code>lang="es"</code>. Soften "en 2027 cada cliente" — Crea y Crece for small clients is ~2028; VeriFactu is the firmer 2027 anchor.</td></tr>
-      <tr><td>Design system</td><td><span class="sc s3">3</span></td><td>Bespoke <code>#00D639</code>, not the Sage brand green. Re-token to brand.</td></tr>
-      <tr><td>Narrative</td><td><span class="sc s5">5</span></td><td>Full nine-section arc. Reference standard.</td></tr>
-      <tr><td>Naming</td><td><span class="sc s4">4</span></td><td>Apply the terminology lock end-to-end; confirm Spanish product names against the master list.</td></tr>
-      <tr><td>Proof &amp; trust</td><td><span class="sc s3">3</span></td><td>Surface VeriFactu certification status and a despachos customer voice above the fold.</td></tr>
-      <tr><td>CTA</td><td><span class="sc s5">5</span></td><td>Multiple specific, working CTAs. Keep.</td></tr>
-      <tr><td>Technical hygiene</td><td><span class="sc s4">4</span></td><td>Lightweight (~48 KB), <code>noindex</code> for review. Drop the English subtitles for production.</td></tr>
-      <tr><td>Replicability</td><td><span class="sc s4">4</span></td><td>Clean and parallel to PT — a strong base to extract the master template from.</td></tr>
-    </table>
-
-    <!-- PORTUGAL -->
-    <div class="scard" style="background:#F3EFFB;border-color:#D8CCF0">
-      <div class="tot s3">38<small>/ 50</small></div>
-      <div class="desc" style="flex:1"><b><span class="flagchip pt">PT</span> &nbsp;Portugal · Contabilistas</b><br><span>Structurally the cleanest to replicate — but the hook is borrowed from a country it doesn't fit.</span></div>
-    </div>
-    <table class="tbl">
-      <tr><th>Dimension</th><th style="width:46px">Score</th><th>Note &amp; fix</th></tr>
-      <tr><td>Customer-voice hook</td><td><span class="sc s3">3</span></td><td><b>Core issue.</b> "Em 2027, cada um dos seus clientes muda a forma como fatura" is copied from FR/ES logic. Portugal has no B2B cliff — ATCUD/QR/SAF-T have been live since 2022–23. Re-ground (see §04).</td></tr>
-      <tr><td>Tone discipline</td><td><span class="sc s4">4</span></td><td>Add the acknowledge-reset panel that ES has and PT lacks.</td></tr>
-      <tr><td>Localisation</td><td><span class="sc s3">3</span></td><td>Correct <code>lang="pt"</code>, but the regulatory substance is mis-grounded. Anchor to QES-on-PDF (1 Jan 2027), monthly SAF-T and B2G CIUS-PT, framed as advisory opportunity.</td></tr>
-      <tr><td>Design system</td><td><span class="sc s3">3</span></td><td>Same bespoke green as ES. Re-token to brand.</td></tr>
-      <tr><td>Narrative</td><td><span class="sc s4">4</span></td><td>Seven sections vs ES's nine — restore the acknowledge-reset and compliance-depth panels.</td></tr>
-      <tr><td>Naming</td><td><span class="sc s4">4</span></td><td>Add the PT-specific locked terms (ATCUD, SAF-T, CIUS-PT) to the master list.</td></tr>
-      <tr><td>Proof &amp; trust</td><td><span class="sc s3">3</span></td><td>Lead with "already compliant by design" — a genuine PT strength worth surfacing.</td></tr>
-      <tr><td>CTA</td><td><span class="sc s5">5</span></td><td>Strong, working CTAs. Keep.</td></tr>
-      <tr><td>Technical hygiene</td><td><span class="sc s4">4</span></td><td>Clean (~44 KB). Drop English subtitles for production.</td></tr>
-      <tr><td>Replicability</td><td><span class="sc s5">5</span></td><td>Ironically the best structural base — tight, parallel, easy to fork.</td></tr>
-    </table>
-
-    <!-- FRANCE -->
-    <div class="scard" style="background:#E7F4FA;border-color:#BBDDEC">
-      <div class="tot s5">46<small>/ 50</small></div>
-      <div class="desc" style="flex:1"><b><span class="flagchip fr">FR</span> &nbsp;France · Experts-comptables</b><br><span>The approved gold standard — signed off by Diego &amp; Jeremy. The benchmark the other markets are measured against.</span></div>
-    </div>
-    <table class="tbl">
-      <tr><th>Dimension</th><th style="width:46px">Score</th><th>Note</th></tr>
-      <tr><td>Customer-voice hook</td><td><span class="sc s5">5</span></td><td>"À partir de septembre 2026…" — the clearest, hardest clock of the three, framed entirely from the client's reality. The reference hook.</td></tr>
-      <tr><td>Tone discipline</td><td><span class="sc s5">5</span></td><td>Investment-led, customer-voice, acknowledge-not-apologise. The approved tone benchmark the others should inherit.</td></tr>
-      <tr><td>Localisation</td><td><span class="sc s5">5</span></td><td>French build with PA/PPF/AKAO used correctly and the Sept 2026/2027 dates accurate. (If the outer gate shell still carries <code>lang="en"</code>, that's a one-line packaging fix, not a content issue.)</td></tr>
-      <tr><td>Design system</td><td><span class="sc s4">4</span></td><td>A distinct, approved build for France. The only open item is the cross-market decision on whether to converge all markets on one brand-token set — not a France fault.</td></tr>
-      <tr><td>Narrative</td><td><span class="sc s5">5</span></td><td>Carries the canonical three-phase France strategy (SfA alongside GE / SfA embedded in GE / Sage Active vision) — the strategic backbone for every France document.</td></tr>
-      <tr><td>Naming</td><td><span class="sc s5">5</span></td><td>Terminology lock is native here: PA = <em class="i">Plateforme Agréée</em> (AKAO), PPF = <em class="i">Portail Public de Facturation</em>, SfA, GE, Sage Prévision. France is where the lock originated.</td></tr>
-      <tr><td>Proof &amp; trust</td><td><span class="sc s5">5</span></td><td>AKAO — the DGFiP-registered PA acquired Jan 2026 — is a best-in-class proof asset, surfaced prominently.</td></tr>
-      <tr><td>CTA</td><td><span class="sc s4">4</span></td><td>Strong within the build; a separate public-acquisition variant would expose them openly.</td></tr>
-      <tr><td>Technical hygiene</td><td><span class="sc s4">4</span></td><td>Gating and payload weight are correct and intentional for a confidential, approved preview. A public-acquisition variant would simply be open and lighter.</td></tr>
-      <tr><td>Replicability</td><td><span class="sc s4">4</span></td><td>As the approved benchmark it defines the standard others replicate toward; forking happens at the content/standard level rather than the bespoke gate wrapper.</td></tr>
-    </table>
-
-    <div class="call win">
-      <div class="ci">→</div>
-      <div><h4>The fast path</h4><p>France is the approved benchmark — leave it as is. The work sits with the others: keep <strong>Spain's</strong> strong arc and lead it with the dual-clock; <strong>re-ground Portugal's</strong> hook to its real regulatory reality. Bank the shared structure and the terminology lock as the master template, so every future market launches to the France standard fast.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="hooks">
-  <div class="wrap">
-    <div class="lead-no">04 — Re-grounding the hook</div>
-    <h2>Same wedge, three different truths</h2>
-    <p class="intro">The hook is sacred and the hook is local. Here is the accurate clock for each market, and the framing that fits it.</p>
-    <table class="tbl">
-      <tr><th>Market</th><th>The real clock</th><th>Hook framing</th></tr>
-      <tr><td><b>France</b><br><span style="color:var(--cyan)">Hard cliff</span></td><td>1 Sept 2026: receive-all + large/ETI issue &amp; e-report. 1 Sept 2027: SMEs &amp; micro issue. Via a PA into the PPF.</td><td><em class="i">"À partir de septembre 2026, la facturation de vos clients change."</em> A dated countdown. Readiness = the offer.</td></tr>
-      <tr><td><b>Spain</b><br><span style="color:var(--green-d)">Dual clock</span></td><td>VeriFactu (certified software) 2026–27; Crea y Crece B2B large firms ~2027, others ~2028.</td><td>Keep the existing <em class="i">"dos relojes, una plataforma"</em> — accurate and strong. Anchor the date to VeriFactu.</td></tr>
-      <tr><td><b>Portugal</b><br><span style="color:var(--violet)">Continuous</span></td><td>No B2B cliff. ATCUD + QR + monthly SAF-T live since 2022–23; QES-on-PDF 1 Jan 2027; SAF-T Accounting 2028.</td><td>Drop the "2027 cliff." Reframe: <em class="i">"A conformidade já mudou — esteja à frente do que aí vem."</em> Advisory opportunity, not a deadline scare.</td></tr>
-    </table>
-  </div>
-</section>
-
-<section id="terms">
-  <div class="wrap">
-    <div class="lead-no">05 — Terminology lock</div>
-    <h2>The words, fixed once</h2>
-    <p class="intro">A shared glossary every market page inherits verbatim. This is what stops "migration" creeping back in and PA/PPF being conflated.</p>
-    <table class="tbl">
-      <tr><th>Term</th><th>Use exactly as</th><th>Never</th></tr>
-      <tr><td>SfA</td><td>Sage for Accountants — lowercase <code>f</code></td><td>SFA, S.F.A.</td></tr>
-      <tr><td>GE</td><td>Génération Experts</td><td>"Generation Experts"</td></tr>
-      <tr><td>Sage Prévision</td><td>Always the full name</td><td>"Prevision", "the forecasting tool"</td></tr>
-      <tr><td>AKAO</td><td>DGFiP-registered PA, acquired by Sage Jan 2026</td><td>generic "our platform"</td></tr>
-      <tr><td>PA</td><td>Plateforme Agréée (Approved Platform — what AKAO is)</td><td>confusing PA with PPF</td></tr>
-      <tr><td>PPF</td><td>Portail Public de Facturation (the government directory/hub)</td><td>calling it "the platform"</td></tr>
-      <tr><td>VeriFactu</td><td>Spain — certified, tamper-evident billing software</td><td>conflating with Crea y Crece</td></tr>
-      <tr><td>Crea y Crece</td><td>Spain — Ley 18/2022, B2B e-invoicing exchange</td><td>"the Spanish mandate" (which one?)</td></tr>
-      <tr><td>ATCUD / SAF-T / CIUS-PT</td><td>Portugal — the layered post-issuance regime</td><td>implying a clearance mandate</td></tr>
-      <tr><td>Any change story</td><td>"readiness", "get ready", "ahead of"</td><td><b>"migration"</b> — banned</td></tr>
-    </table>
-  </div>
-</section>
-
-<section id="replicate">
-  <div class="wrap">
-    <div class="lead-no">06 — The replication system</div>
-    <h2>How to launch any market in days, not weeks</h2>
-    <p class="intro">The point of the rubric, the lock and the master template is speed without drift. This is the repeatable sequence for the next country — and the loop that keeps every page improving.</p>
-
-    <h3>The country-launch sequence</h3>
-    <ol class="steps">
-      <li><b>Fork the master template</b><span>One tokenised codebase (PT structure + ES content/tone, on the Sage brand system). Components, not bespoke markup.</span></li>
-      <li><b>Re-ground the regulatory clock</b><span>Establish the country's <em class="i">real</em> mandate and dates from primary sources. This is the only section that must be researched fresh every time — and the one most likely to be wrong if copied.</span></li>
-      <li><b>Localise properly</b><span>Language + correct <code>lang</code>, currency, date format, local regulator and product names, and the country's proof assets.</span></li>
-      <li><b>Apply the terminology lock</b><span>Inherit the master glossary verbatim; add country-specific locked terms.</span></li>
-      <li><b>Score against the rubric before launch</b><span>Target ≥ 45/50. Anything under 4 on hook, tone, localisation or terminology blocks the launch.</span></li>
-      <li><b>Ship open &amp; light, gate only for review</b><span>Public pages: no password, performance budget met, correct meta. Keep the gated build for stakeholder previews only.</span></li>
-      <li><b>Re-score quarterly &amp; feed wins back</b><span>Anything that lifts one market's score becomes a master-template upgrade every market inherits. That's the global iteration loop.</span></li>
-    </ol>
-
-    <div class="call key">
-      <div class="ci">★</div>
-      <div><h4>What "good" looks like at scale</h4><p>Any Sage market can stand up a new accountant page that is on-brand, correctly localised, regulatorily accurate and scores 45+ on the rubric — in days — because the structure, tone, terminology and design tokens are inherited, and only the local regulatory truth is built fresh.</p></div>
-    </div>
-  </div>
-</section>
-
-</main></div>
 
 <footer>
   <div class="wrap">
-    <span>Winning in Small Europe · Accountant web · FR / ES / PT · June 2026</span>
-    <span class="pill">Confidential · internal · not for distribution</span>
+    <span>Winning in Small Europe · <b>Web Estate review</b> · concept &amp; review material, not for publication</span>
+    <span class="r"><span>France</span><span>Spain</span><span>Germany</span><span>Portugal</span></span>
   </div>
 </footer>
-
-<script>
-function showTab(id){
-  document.querySelectorAll('.panel').forEach(function(p){p.hidden=(p.id!==id);});
-  document.querySelectorAll('.tabnav button').forEach(function(b){b.classList.toggle('on',b.dataset.t===id);});
-  window.scrollTo(0,0);
-}
-document.querySelectorAll('.tabnav button').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.t);});});
-document.querySelectorAll('.herojump button[data-go]').forEach(function(b){b.addEventListener('click',function(){showTab(b.dataset.go);});});
-(function(){var fullu={fr:'https://lewisvines.github.io/sage-fr-demo/',es:'https://lewisvines.github.io/sage-es-demo/',pt:'https://lewisvines.github.io/sage-pt-demo/'};function showMarket(c){document.querySelectorAll('.tab-acc').forEach(function(b){b.classList.toggle('active',b.dataset.c===c);});document.querySelectorAll('.dframe').forEach(function(f){if(f.dataset.c===c){if(!f.getAttribute('src')&&f.dataset.src){f.setAttribute('src',f.dataset.src);}f.classList.add('active');}else{f.classList.remove('active');}});var o=document.getElementById('openlive');if(o){o.setAttribute('href',fullu[c]);}}document.querySelectorAll('.tab-acc').forEach(function(b){b.addEventListener('click',function(){showMarket(b.dataset.c);});});})();</script>
 
 </body>
 </html>
