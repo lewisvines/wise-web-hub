@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winning in Small Europe · Web Estate (Confidential)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#00DC82; --green-d:#04B86E; --green-ink:#065C3C; --forest:#0a2e21;
+    --ink:#0F0F10; --ink-soft:#3A3A3F; --slate:#46564e; --slate-2:#6c7a72;
+    --paper:#FFFFFF; --bone:#F7F8F5; --bone-2:#EEF1EB; --line:#E2E7DE; --line-2:#D2DACE;
+    --coral:#E0574E; --coral-bg:#FCEDEB; --cyan:#0E7FA8; --cyan-bg:#E7F4FA;
+    --violet:#6A4FB0; --violet-bg:#F0ECFA; --amber:#B07A12; --amber-bg:#FBF3E2;
+    --green-bg:#EAF8F0; --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',Arial,sans-serif;color:var(--ink);background:var(--bone);
+    line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green-d);font-weight:600;margin-bottom:20px}
+  .kicker::before{content:"";width:28px;height:1px;background:currentColor}
+  .kicker.on-dark{color:var(--green)}
+
+  /* ===== confidential ribbon ===== */
+  .ribbon{background:var(--forest);color:#BFD3C8;font-size:12px;letter-spacing:.04em;
+    text-align:center;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .ribbon b{color:#fff;font-weight:600}
+
+  /* ===== top wordmark ===== */
+  .topbar{background:var(--forest)}
+  .topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:20px;padding-bottom:4px}
+  .mark{display:flex;align-items:center;gap:11px;color:#fff;font-weight:700;font-size:16px;letter-spacing:-.01em}
+  .mark .dot{width:30px;height:30px;border-radius:8px;background:var(--green);display:grid;place-items:center;color:#04210f;font-weight:800;font-size:18px;line-height:1}
+  .mark .sep{color:rgba(255,255,255,.3);font-weight:400}
+  .mark .wise{color:var(--green)}
+
+  /* ===== header / hero ===== */
+  header{background:var(--forest);color:#fff;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:140%;
+    background:radial-gradient(50% 50% at 50% 50%,rgba(0,220,130,.16),transparent 70%);pointer-events:none}
+  header .wrap{position:relative;padding:48px 28px 76px}
+  header h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(34px,5.4vw,58px);
+    line-height:1.04;letter-spacing:-.015em;max-width:18ch}
+  header h1 em{font-style:italic;color:var(--green)}
+  header .sub{margin-top:22px;max-width:60ch;font-size:17.5px;color:#C7DACF}
+  .hmeta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+  .hmeta span{font-size:11.5px;letter-spacing:.05em;border:1px solid rgba(255,255,255,.2);
+    color:#CFE0D6;padding:6px 13px;border-radius:999px}
+  .hmeta span b{color:#fff;font-weight:600}
+
+  /* ===== why section ===== */
+  .why{padding:74px 0 30px}
+  .why h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,3.6vw,38px);
+    line-height:1.12;letter-spacing:-.01em;max-width:20ch}
+  .why .lead{margin-top:16px;max-width:64ch;font-size:16.5px;color:var(--slate)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 26px 28px;
+    box-shadow:0 1px 2px rgba(15,40,25,.04),0 18px 40px -30px rgba(10,46,33,.5)}
+  .card .ix{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;
+    font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:#fff;margin-bottom:16px}
+  .card.c1 .ix{background:var(--coral)} .card.c2 .ix{background:var(--cyan)}
+  .card.c3 .ix{background:var(--violet)} .card.c4 .ix{background:var(--green-d)}
+  .card h3{font-size:17.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
+  .card p{font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+  .card p b{color:var(--ink);font-weight:600}
+
+  /* ===== routes (the two options) ===== */
+  .routes{padding:36px 0 84px}
+  .routes .ey{text-align:center;margin-bottom:30px}
+  .routes .ey .kicker{margin-bottom:14px}
+  .routes .ey h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(23px,3vw,32px);letter-spacing:-.01em}
+  .routes .ey p{margin-top:10px;color:var(--slate);font-size:15.5px}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:760px){.opts{grid-template-columns:1fr}}
+  .opt{position:relative;display:flex;flex-direction:column;background:var(--paper);
+    border:1px solid var(--line);border-radius:20px;padding:0 0 28px;text-decoration:none;color:var(--ink);
+    overflow:hidden;transition:transform .22s cubic-bezier(.2,.7,.2,1),border-color .22s,box-shadow .22s;
+    box-shadow:0 1px 2px rgba(15,40,25,.04),0 24px 50px -34px rgba(10,46,33,.45)}
+  .opt:hover{transform:translateY(-5px);border-color:var(--green-d);
+    box-shadow:0 2px 4px rgba(15,40,25,.05),0 40px 70px -34px rgba(10,46,33,.6)}
+  .opt .top{height:7px;background:linear-gradient(90deg,var(--green),var(--green-d))}
+  .opt.acc .top{background:linear-gradient(90deg,#0E7FA8,#1AA0CF)}
+  .opt .inner{padding:28px 30px 0}
+  .opt .flags{display:flex;gap:7px;margin-bottom:18px}
+  .opt .flags .fl{font-size:11px;font-weight:700;letter-spacing:.04em;background:var(--bone-2);
+    color:var(--green-ink);border:1px solid var(--line);padding:4px 9px;border-radius:7px}
+  .opt.acc .flags .fl{color:var(--cyan)}
+  .opt .lab{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--slate-2);font-weight:600;margin-bottom:8px}
+  .opt h3{font-family:'Fraunces',serif;font-weight:600;font-size:25px;line-height:1.12;letter-spacing:-.01em;margin-bottom:12px}
+  .opt p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;min-height:66px}
+  .opt .go{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-weight:600;font-size:15px;color:var(--green-ink)}
+  .opt.acc .go{color:var(--cyan)}
+  .opt .go svg{width:17px;height:17px;transition:transform .22s}
+  .opt:hover .go svg{transform:translate(3px,-3px)}
+
+  /* ===== footer ===== */
+  footer{background:var(--forest);color:#9FBBAE;padding:34px 0;font-size:13px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  footer b{color:#fff;font-weight:600}
+  footer .r{display:flex;gap:8px;flex-wrap:wrap}
+  footer .r span{border:1px solid rgba(255,255,255,.16);padding:4px 11px;border-radius:999px}
+</style>
+</head>
+<body>
+
+<div class="ribbon">CONFIDENTIAL · WiSE programme · concept &amp; review material — <b>not for publication</b></div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="mark"><span class="dot">+</span> Sage <span class="sep">|</span> <span class="wise">WiSE</span> · Web Estate</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <span class="kicker on-dark">Winning in Small Europe · Web Estate</span>
+    <h1>Two channels, four markets, <em>one standard</em> for the web.</h1>
+    <p class="sub">A compliance window is opening across France, Spain, Germany and Portugal — and the website is where that intent lands. This is the single place to review both halves of the estate, see the case for upgrading each one, and hold every page to the same bar.</p>
+    <div class="hmeta">
+      <span><b>4</b> markets · FR · ES · DE · PT</span>
+      <span><b>2</b> channels · Accountant &amp; Active</span>
+      <span><b>1</b> playbook standard</span>
+    </div>
+  </div>
+</header>
+
+<section class="why">
+  <div class="wrap">
+    <span class="kicker">Why we upgrade now</span>
+    <h2>The web estate isn't ready for the moment it's about to meet.</h2>
+    <p class="lead">Across both channels the picture is the same: strong intent arriving at pages that read as generic, inconsistent, and a step behind the regulation driving the demand. Four reasons it can't wait.</p>
+    <div class="grid">
+      <div class="card c1">
+        <span class="ix">1</span>
+        <h3>A compliance window that won't repeat</h3>
+        <p>E-invoicing and continuous-compliance mandates are forcing every small business and their accountant to act — <b>France from September 2026</b>, Spain on VeriFactu &amp; Crea y Crece, Germany's E-Rechnung receipt duty, Portugal's ATCUD / SAF-T regime. This is the largest demand event in years, and the web is where it lands.</p>
+      </div>
+      <div class="card c2">
+        <span class="ix">2</span>
+        <h3>An estate that doesn't feel local</h3>
+        <p>Pan-European screenshots carry foreign names and stray typos, social proof is thin where it should be strongest, and <b>Portugal has no Active page at all</b>. It reads as generic at the exact moment buyers want local certainty about their own obligation.</p>
+      </div>
+      <div class="card c3">
+        <span class="ix">3</span>
+        <h3>Mixed messages, market to market</h3>
+        <p>Promo end-dates drift between countries, and the compliance hook that should lead every page is front-and-centre in France, thin in Spain and receive-only in Germany. <b>Inconsistency erodes the trust</b> that converts a worried buyer into a trial.</p>
+      </div>
+      <div class="card c4">
+        <span class="ix">4</span>
+        <h3>One standard, and a way to hold it</h3>
+        <p>Each channel carries a playbook for what a <b>"good" country page</b> looks like — local regulatory clock, named compliance mechanism, real proof, one clear offer. Every demo is built to it and every live site measured against it, so the bar holds as we scale across markets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="routes">
+  <div class="wrap">
+    <div class="ey">
+      <span class="kicker">Review the estate</span>
+      <h2>Choose a channel to open its review.</h2>
+      <p>Each opens its own hub — the market demos, the current-state case, and the playbook.</p>
+    </div>
+    <div class="opts">
+
+      <a class="opt acc" href="https://lewisvines.github.io/wise-accountants-web-hub/">
+        <span class="top"></span>
+        <div class="inner">
+          <div class="flags"><span class="fl">FR</span><span class="fl">ES</span><span class="fl">PT</span></div>
+          <div class="lab">Accountant channel</div>
+          <h3>Review WiSE Accountant Websites</h3>
+          <p>The accountant-channel web across France, Spain and Portugal — three market demos, the current-state case for prioritising each redesign, and the playbook that holds the standard together.</p>
+          <span class="go">Open the accountant review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a class="opt act" href="https://lewisvines.github.io/Sage-Active-web-hub/">
+        <span class="top"></span>
+        <div class="inner">
+          <div class="flags"><span class="fl">FR</span><span class="fl">ES</span><span class="fl">DE</span><span class="fl">PT</span></div>
+          <div class="lab">Sage Active product</div>
+          <h3>Review WiSE Active Websites</h3>
+          <p>The Sage Active product web across France, Spain, Germany and Portugal — localised hero concepts in native language and English, the current-state review, and the same playbook standard.</p>
+          <span class="go">Open the Active review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Winning in Small Europe · <b>Web Estate review</b> · concept &amp; review material, not for publication</span>
+    <span class="r"><span>France</span><span>Spain</span><span>Germany</span><span>Portugal</span></span>
+  </div>
+</footer>
+
+</body>
+</html>
